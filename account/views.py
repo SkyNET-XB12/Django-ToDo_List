@@ -6,7 +6,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 import datetime
 
 # imports the forms
-import forms as portal_forms  
+# imports the forms
+from . import forms as portal_forms 
 # Create your views here.
 
 def login_template (request):
@@ -29,6 +30,6 @@ def register (request):
         register_form = portal_forms.RegisterForm(request.POST)
         # Here, we verify whether the form is valid
         if (register_form.is_valid()):
-            return HttpResponseRedirect("auth/login")
+            return HttpResponseRedirect("account/login")
     
     return render (request, "login.html",{"register_form": register_form})
